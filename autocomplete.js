@@ -1,21 +1,24 @@
 $( document ).ready(
-
-  $("#target").keyup(function(event){
-    var queryString = event.target.value;
-
-    $.ajax({
-      url: "./data.json",
-      dataType: "json",
-      success: function(response){
-        console.log('good ajax')
-        $("#users").empty();
-        var matches = findUser(queryString, response);
-        for (var i = 0; i < matches.length; i++) {
-          $("#users").append("<p>" + matches[i].username + " - " + matches[i].name + "</p>")
+  $("#commentbox").keypress(function(event){
+    if (event.which === 64) {
+      $("#commentbox").on('change', function(event){
+        var index = event.target.value.indexOf('@');
+        var target = event.target.value.slice(index + 1);
+        if (!(target === ' ')) {
+          $.ajax({
+            url: "./data.json",
+            dataType: "json",
+            success: function(response){
+              $("#users").empty();
+              var matches = findUser(target, response);
+              for (var i = 0; i < matches.length; i++) {
+                $("#users").append("<p>" + matches[i].username + " - " + matches[i].name + "</p>")
+              }
+            }
+          })//end ajax
         }
-      }
-
-    })
+      })
+    }
 
   })
 
