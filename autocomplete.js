@@ -1,6 +1,27 @@
-var data = require('./data.json')
+$( document ).ready(
 
-function findUser(input) {
+  $("#target").keyup(function(event){
+    var queryString = event.target.value;
+
+    $.ajax({
+      url: "./data.json",
+      dataType: "json",
+      success: function(response){
+        console.log('good ajax')
+        $("#users").empty();
+        var matches = findUser(queryString, response);
+        for (var i = 0; i < matches.length; i++) {
+          $("#users").append("<p>" + matches[i].username + " - " + matches[i].name + "</p>")
+        }
+      }
+
+    })
+
+  })
+
+)
+
+function findUser(input, data) {
   var re = new RegExp(input, 'i');
   var matches = [];
   for (var i = 0; i < data.length; i++) {
@@ -10,5 +31,3 @@ function findUser(input) {
   }
   return matches;
 }
-
-console.log(findUser('cat'));
