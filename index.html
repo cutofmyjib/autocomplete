@@ -7,19 +7,20 @@
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+        <script src="node_modules/jquery-textcomplete/dist/jquery.textcomplete.js"></script>
+        <link rel="stylesheet" type="text/css" href="node_modules/jquery-textcomplete/dist/jquery.textcomplete.css">
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,300' rel='stylesheet' type='text/css'>
     </head>
     <body>
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-
-        <p>Hello world!</p>
-        <textarea id="commentbox"></textarea>
-        <!-- <form>
-            <input type="url" name="comment" id="target">
-        </form> -->
-        <div id="users">
-        </div>
+        <section class="main">
+            <p>To find a user start with an '@' symbol and start typing their username or name!</p>
+            <textarea id="commentbox"></textarea>
+            <div id="users">
+            </div>
+        </section>
         <script src="autocomplete.js"></script>
     </body>
 </html>
