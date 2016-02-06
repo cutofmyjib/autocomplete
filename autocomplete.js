@@ -1,7 +1,7 @@
 $( document ).ready(
   $("#commentbox").keypress(function(event){
     if (event.which === 64) {
-      $("#commentbox").on('change', function(event){
+      $("#commentbox").on('keydown', function(event){
         var index = event.target.value.indexOf('@');
         var target = event.target.value.slice(index + 1);
         if (!(target === ' ')) {
